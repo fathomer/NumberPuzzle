@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Arrays; 
 
 class CustomNumberPuzzleControl extends NumberPuzzleControl {
 	public int getWidth() {
@@ -43,11 +44,25 @@ class CustomNumberPuzzleControl extends NumberPuzzleControl {
 	}
 	public int[] getRandomNumbersForGrid() {
 		int arr[] = new int[15];
+		boolean flag = false;
 		
-		//Your logic here
-		int a = getRandomNumber();
-		
-		
+		for(int i = 0; i < 15;) {
+			flag = false;
+			System.out.print(i + "I \n");
+			int a = getRandomNumber();
+			System.out.print(a + "Non random A \n");
+			a = (14 * a /99) + 1;
+			System.out.print(a + "Random A \n");
+			for (int index = i;index >=0;index--) { 
+				if (arr[index] == a) { 
+					flag = true; 
+			        break; 
+				}
+			}
+			if (flag) continue;
+			arr[i++] = a;
+		}
+				
 		return arr;
 	}
 	public boolean checkForWinner(Button[] buttons)
